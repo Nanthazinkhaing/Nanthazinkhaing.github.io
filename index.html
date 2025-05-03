@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>နန်းသဇင်ခိုင် - အဆိုတော်ဖြစ်လိုသော ကျောင်းသူ</title>
+    <style>
+        :root {
+            --primary-color: #8B4513; /* မီးခိုးရောင် */
+            --secondary-color: #D2B48C; /* အညိုရောင် */
+            --accent-color: #A0522D; /* နက်မှောင်ညိုရောင် */
+            --light-color: #F5F5DC; /* အဖြူရောင် */
+            --text-color: #333;
+        }
+        
+        body {
+            font-family: 'Padauk', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+            position: relative;
+        }
+        
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--secondary-color);
+            margin: 0 auto 1rem;
+            display: block;
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .tagline {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: var(--accent-color);
+            margin: 0.5rem auto;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .hobby-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            width: 200px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .hobby-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .hobby-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .certificates {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .certificate {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .project {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 2rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .math-fact {
+            background: var(--secondary-color);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            display: none;
+        }
+        
+        .show-math {
+            display: block;
+        }
+        
+        .toggle-math {
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 1rem 0;
+        }
+        
+        .toggle-math:hover {
+            background: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hobby-card {
+                width: 100%;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Profile Picture" class="profile-pic">
+        <h1>နန်းသဇင်ခိုင်</h1>
+        <p class="tagline">အဆိုတော်ဖြစ်လိုသူ | Grade-10 ကျောင်းသူ | မိဘအားကိုးရသောသမီး</p>
+    </header>
+    
+    <div class="container">
+        <section id="about">
+            <h2>ကိုယ်ရေးအကျဉ်း</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>မင်္ဂလာပါ! ကျွန်မနာမည်ကနန်းသဇင်ခိုင်ပါ။ ကော့ကရိတ်မြို့နယ်၊ ထီဖိုးစံကျေးရွာမှာနေထိုင်ပြီး တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်းက Grade-10 ကျောင်းသူတစ်ယောက်ပါ။</p>
+                    <p>ကျွန်မက ပျော်ပျော်ရွှင်ရွှင်နေရတာကိုကြိုက်နှစ်သက်ပြီး သီချင်းဆိုရတာကိုအထူးဝါသနာပါပါတယ်။ မိဘတွေအားကိုးရသော သမီးကောင်းတစ်ယောက်ဖြစ်ဖို့ ကြိုးစားနေပါတယ်။</p>
+                    <p>ကျောင်းမှာတော့ သင်္ချာဘာသာရပ်ကို အထူးစိတ်ဝင်စားပါတယ်။ ဂဏန်းတွေနဲ့ပုံစံတွေကိုရှာဖွေရတာကို ကြိုက်နှစ်သက်ပြီး ဂီတာတီးရတာကိုလည်း နှစ်သက်ပါတယ်။</p>
+                    <p>ကျွန်မရဲ့အိပ်မက်ကတော့ လူတွေကို ပျော်ရွှင်မှုပေးနိုင်တဲ့ အဆိုတော်တစ်ယောက်ဖြစ်ဖို့ပါပဲ။</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="ကျောင်းသူ">
+                </div>
+            </div>
+        </section>
+        
+        <section id="hobbies">
+            <h2>ဝါသနာများ</h2>
+            <div class="hobbies">
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>သီချင်းဆိုခြင်း</h3>
+                    <p>စိတ်ခံစားမှုတွေကို သီချင်းနဲ့ဖော်ပြခြင်း</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3>သီချင်းနားထောင်ခြင်း</h3>
+                    <p>သီချင်းအသစ်တွေရှာဖွေခြင်း</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-yarn"></i>
+                    </div>
+                    <h3>ချည်ထိုးခြင်း</h3>
+                    <p>ချည်နဲ့လှပသောပုံစံများဖန်တီးခြင်း</p>
+                </div>
+                <div class="hobby-card">
+                    <div class="hobby-icon">
+                        <i class="fas fa-table-tennis"></i>
+                    </div>
+                    <h3>ကြက်တောင်ရိုက်ခြင်း</h3>
+                    <p>ကျန်းမာရေးအတွက်ကစားခြင်း</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="education">
+            <h2>ပညာရေး</h2>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ကျောင်း">
+                </div>
+                <div class="about-text">
+                    <h3>တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်း</h3>
+                    <p>Grade-10 တက်ရောက်နေပါသည်</p>
+                    <p>နေရာ - ထီဖိုးစံကျေးရွာ၊ ကော့ကရိတ်မြို့နယ်၊ ကရင်ပြည်နယ်</p>
+                    <p>အကြိုက်ဆုံးဘာသာရပ် - သင်္ချာ</p>
+                    
+                    <button class="toggle-math" onclick="toggleMathFact()">သင်္ချာအံ့ဖွယ်အချက်များ</button>
+                    <div class="math-fact" id="mathFact">
+                        <p>သိပါသလား? Fibonacci sequence ကိုသဘာဝတရားမှာအများကြီးတွေ့ရပါတယ်။ ပန်းပွင့်တွေရဲ့အရွက်အစီအစဉ်၊ ပင့်ကူအိမ်ရဲ့ပုံစံတွေမှာတွေ့နိုင်ပါတယ်။</p>
+                        <p>သင်္ချာမှာ - 0, 1, 1, 2, 3, 5, 8, 13, 21, 34...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="certificates">
+            <h2>ရရှိထားသောဆုတံဆိပ်များ</h2>
+            <div class="certificates">
+                <div class="certificate">
+                    <h3>ပါဠိကေတုဆု</h3>
+                    <p>သုကုမာရမဂ္ဂဒီပနီ၊ သီလရှင်ကျင့်ဝတ်</p>
+                    <p>ပါဠိဘာသာနှင့် ဗုဒ္ဓဘာသာဆိုင်ရာတွင် ထူးချွန်မှုအတွက်ဆု</p>
+                </div>
+                <div class="certificate">
+                    <h3>ကရင်စာပေ</h3>
+                    <p>လိက်ခင်းထါ်</p>
+                    <p>ကရင်ဘာသာစကားနှင့်စာပေတွင် ထူးချွန်မှုအတွက်ဆု</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="projects">
+            <h2>ပရောဂျက်များ</h2>
+            <div class="project">
+                <h3>ဆပ်ပြာရည်ပြုလုပ်ခြင်း</h3>
+                <p>အခြေခံပစ္စည်းများဖြင့် ဆပ်ပြာရည်ပြုလုပ်နည်းကိုလေ့လာခဲ့သော ပရောဂျက်ဖြစ်ပါသည်။ ဤပရောဂျက်မှတစ်ဆင့် နေ့စဉ်သုံးပစ္စည်းများနှင့်ဓာတုဗေဒကိုလေ့လာနိုင်ခဲ့ပါသည်။</p>
+                <img src="https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="ဆပ်ပြာလုပ်နေပုံ" style="max-width: 100%; border-radius: 8px; margin-top: 1rem;">
+            </div>
+        </section>
+        
+        <section id="aspirations">
+            <h2>အိပ်မက်များ</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>ကျွန်မရဲ့အဓိကရည်မှန်းချက်ကတော့ ပရော်ဖက်ရှင်နယ်အဆိုတော်တစ်ယောက်ဖြစ်ဖို့ပါပဲ။</p>
+                    <p>ကျွန်မရဲ့အဆိုအတတ်နဲ့ လူတွေကိုစေတနာကောင်းတွေဖြစ်အောင် လှုံ့ဆော်ပေးချင်ပါတယ်။</p>
+                    <p>သီချင်းဆိုတာထက်ပိုပြီး ကျွန်မရဲ့ကျေးရွာက မိန်းကလေးတွေအတွက် စံနမူနာဖြစ်ချင်ပါတယ်။</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="သီချင်းဆိုနေပုံ">
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>ဆက်သွယ်ရန်</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; ၂၀၂၃ နန်းသဇင်ခိုင်။ မူပိုင်ခွင့်များရှိပါသည်။</p>
+    </footer>
+    
+    <script>
+        function toggleMathFact() {
+            const mathFact = document.getElementById('mathFact');
+            mathFact.classList.toggle('show-math');
+            
+            const button = document.querySelector('.toggle-math');
+            if (mathFact.classList.contains('show-math')) {
+                button.textContent = 'သင်္ချာအံ့ဖွယ်အချက်များကိုဖျောက်ရန်';
+            } else {
+                button.textContent = 'သင်္ချာအံ့ဖွယ်အချက်များ';
+            }
+        }
+        
+        // Simple animation for hobby cards when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            const hobbyCards = document.querySelectorAll('.hobby-card');
+            hobbyCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, 100 * index);
+            });
+            
+            // Initially set opacity to 0 for animation
+            hobbyCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s, transform 0.5s';
+            });
+        });
+    </script>
+</body>
+</html>
